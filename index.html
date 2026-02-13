@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>El Mundo de Marlene</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jacquard+12&family=Pacifico&family=Patrick+Hand&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div id="app">
+        <!-- Section 1: Landing -->
+        <section id="landing" class="screen active">
+            <h1 class="crochet-title">Con cariño, para Marlene. 🫶</h1>
+            <button id="start-btn" class="crochet-btn">Continuar</button>
+            <div class="wool-bg"></div>
+        </section>
+
+        <!-- Section 2: Gift & Members -->
+        <section id="section2" class="screen hidden">
+            <!-- Invitation Message -->
+            <div id="gift-invitation" class="invitation-text">
+                <p>¡Tengo un regalo para ti, ábrelo!</p>
+            </div>
+
+            <div id="gift-container" class="gift-box">
+                <div class="gift-lid"></div>
+                <div class="gift-body"></div>
+            </div>
+
+            <div id="members-container" class="members-grid hidden">
+                <!-- Members -->
+                <div class="member hidden" id="member-harry">
+                    <img src="assets/gifs/HarryTalking.gif" alt="Harry">
+                    <div class="speech-bubble">
+                        <p class="typing-text"></p>
+                    </div>
+                </div>
+                <div class="member hidden" id="member-louis">
+                    <img src="assets/gifs/LouisTalking.gif" alt="Louis">
+                    <div class="speech-bubble">
+                        <p class="typing-text"></p>
+                    </div>
+                </div>
+                <div class="member hidden" id="member-niall">
+                    <img src="assets/gifs/NiallTalking.gif" alt="Niall">
+                    <div class="speech-bubble">
+                        <p class="typing-text"></p>
+                    </div>
+                </div>
+                <div class="member hidden" id="member-liam">
+                    <img src="assets/gifs/LyamTalking.gif" alt="Liam">
+                    <div class="speech-bubble">
+                        <p class="typing-text"></p>
+                    </div>
+                </div>
+                <div class="member hidden" id="member-zayn">
+                    <img src="assets/gifs/ZaynTalking.gif" alt="Zayn">
+                    <div class="speech-bubble">
+                        <p class="typing-text"></p>
+                    </div>
+                </div>
+
+                <!-- Kevin's Message -->
+                <div class="member hidden" id="member-kevin">
+                    <img src="assets/img/kevin.jpeg" alt="Kevin" style="border-color: var(--accent-color);">
+                    <div class="speech-bubble"
+                        style="background-color: var(--navy-blue); border-color: var(--wool-light);">
+                        <p class="typing-text"></p>
+                    </div>
+                </div>
+
+                <!-- Final Message (Marlene) -->
+                <div class="member hidden" id="member-marlene">
+
+                    <!-- Ensure you have this image in assets/img/ -->
+                    <img src="assets/img/marlene.jpg" alt="Marlene" style="border-color: var(--accent-color);">
+                    <div class="speech-bubble final-bubble">
+                        <p class="typing-text"></p>
+                    </div>
+                </div>
+
+                <!-- Start Button for next section -->
+                <button id="s2-continue-btn" class="flower-btn hidden">
+                    Continuar 🌸
+                </button>
+            </div>
+        </section>
+
+        <!-- Section 3: The Letter -->
+        <section id="section3" class="screen hidden">
+            <!-- New Background -->
+            <div class="crochet-heart-bg"></div>
+
+            <div class="letter-container">
+                <div class="envelope" id="envelope">
+                    <div class="flap"></div>
+                    <div class="pocket"></div>
+                    <div class="letter-content">
+
+                        <div class="crochet-border">
+                            <h2 class="letter-header">Marlene:</h2>
+                            <p class="letter-body">
+                                Desde el primer momento en que te conocí me pareciste extremadamente hermosa y tuve esa
+                                corazonada inmediata de que eras alguien increíble. Ahora, después de todo lo que hemos
+                                hablado en este último mes, me doy cuenta de que mi intuición no falló y tenía toda la
+                                razón 🫶.
+                                <br><br>
+                                Me gusta todo de ti. Me encanta tu personalidad, tu físico y aunque suene raro decirlo
+                                en esta carta, hasta me encanta ese humor rancio tuyo que tanto me hace reír 😔.
+                                Disfruto
+                                muchísimo nuestra convivencia y cómo siempre tenés algo divertido u ocurrente que
+                                contarme. De verdad, adoro leerte, saber qué estás haciendo, qué cosas te gustan y
+                                entender cómo te sientes cada día.
+                                <br><br>
+                                Has alegrado mi rutina desde que apareciste en ella. Eres una persona única, dedicada y
+                                muy talentosa en lo que haces y eso es algo que yo admiro un montón. No me cansaré de
+                                decírtelo porque son justo esas y demás cosas las que hacen que cada día me gustes más.
+                            </p>
+                            <p class="letter-sign">
+                                Te quiere mucho,<br>
+                                <strong>Kevin ❤️</strong>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <p class="click-hint">💌 Toca la carta para leerla 💌</p>
+            </div>
+
+            <!-- Button to next section (placeholder for later) -->
+            <!-- <button class="crochet-btn" style="margin-top: 20px;">Siguiente</button> -->
+        </section>
+
+
+        <!-- Section 4: Grand Finale Celebration -->
+        <section id="section4" class="screen hidden">
+            <div class="confetti-container"></div>
+            <h1 class="celebration-title">¡Feliz San Valentín Marlene!</h1>
+            <h2 class="celebration-subtitle">🫶🫶🫶</h2>
+
+            <div class="party-grid">
+                <!-- 1D Members -->
+                <div class="party-member member-harry"><img src="assets/gifs/HarryTalking.gif"></div>
+                <div class="party-member member-louis"><img src="assets/gifs/LouisTalking.gif"></div>
+                <div class="party-member member-niall"><img src="assets/gifs/NiallTalking.gif"></div>
+                <div class="party-member member-liam"><img src="assets/gifs/LyamTalking.gif"></div>
+                <div class="party-member member-zayn"><img src="assets/gifs/ZaynTalking.gif"></div>
+            </div>
+
+            <!-- Yopi Center Stage -->
+            <div class="yopi-container">
+                <img src="assets/gifs/YopiMoving.gif" class="yopi-party" alt="Yopi">
+                <div class="speech-bubble yopi-bubble"> tqm ❤️</div>
+            </div>
+
+            <button id="restart-btn" class="crochet-btn" style="margin-top: 2rem; font-size: 1.5rem;">Volver al Inicio
+                🧶</button>
+        </section>
+
+
+
+        <!-- More sections placeholders -->
+    </div>
+    <script src="main.js"></script>
+</body>
+
+</html>

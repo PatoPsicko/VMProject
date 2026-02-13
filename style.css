@@ -1,0 +1,865 @@
+/* Import Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Jacquard+12&family=Pacifico&family=Patrick+Hand&display=swap');
+
+:root {
+    --navy-blue: #0a1128;
+    /* Deep Navy */
+    --wool-light: #1c2a4f;
+    --yarn-white: #fdfdfd;
+    --accent-color: #ff6f61;
+    /* Coral/Pink */
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body,
+html {
+    margin: 0;
+    padding: 0;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    touch-action: none;
+    /* No scroll on mobile */
+    font-family: 'Patrick Hand', cursive;
+    /* Main font for readability */
+    background-color: var(--navy-blue);
+    color: var(--yarn-white);
+}
+
+.screen {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: opacity 0.5s ease-in-out;
+    z-index: 10;
+    padding: 20px;
+    /* Add padding for mobile edges */
+}
+
+.hidden {
+    opacity: 0;
+    pointer-events: none;
+    display: none !important;
+    /* Fix spacing issues */
+}
+
+.active {
+    opacity: 1;
+    pointer-events: all;
+    display: flex !important;
+}
+
+/* --- Section 1 Styles --- */
+
+.wool-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 200%;
+    height: 200%;
+    background:
+        radial-gradient(circle at 50% 50%, transparent 50%, rgba(0, 0, 0, 0.4) 100%),
+        repeating-linear-gradient(45deg, transparent, transparent 10px, var(--wool-light) 10px, var(--wool-light) 20px),
+        repeating-linear-gradient(-45deg, var(--navy-blue), var(--navy-blue) 10px, var(--wool-light) 10px, var(--wool-light) 20px);
+    background-size: 60px 60px;
+    opacity: 0.3;
+    z-index: -1;
+    animation: weave 20s linear infinite;
+}
+
+@keyframes weave {
+    0% {
+        transform: translate(0, 0);
+    }
+
+    100% {
+        transform: translate(-50px, -50px);
+    }
+}
+
+.crochet-title {
+    font-family: 'Jacquard 12', system-ui;
+    font-size: 5rem;
+    text-align: center;
+    color: #ffffff;
+    text-shadow: 2px 2px 0px #000, 4px 4px 0px var(--navy-blue);
+    margin-bottom: 2rem;
+    animation: float 3s ease-in-out infinite;
+    position: relative;
+    background-image: linear-gradient(rgba(10, 17, 40, 0.6), rgba(10, 17, 40, 0.6)), url('assets/gifs/YopiMoving.gif');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    padding: 1rem 3rem;
+    border-radius: 20px;
+    border: 4px dashed #fff;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+}
+
+.crochet-title::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: -10px;
+    width: 0%;
+    height: 4px;
+    background: repeating-linear-gradient(90deg, #fff 0 5px, transparent 5px 10px);
+    transition: width 0.5s;
+    transform: translateX(-50%);
+    animation: stitch-grow 4s infinite alternate ease-in-out;
+}
+
+@keyframes stitch-grow {
+    0% {
+        width: 0%;
+    }
+
+    50% {
+        width: 80%;
+    }
+
+    100% {
+        width: 40%;
+    }
+}
+
+.crochet-btn {
+    font-family: 'Jacquard 12', cursive;
+    font-size: 2rem;
+    background-color: transparent;
+    color: white;
+    border: 4px dashed white;
+    padding: 1rem 3rem;
+    cursor: pointer;
+    border-radius: 20px;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+    position: relative;
+    overflow: hidden;
+    animation: btn-pulse 5s infinite ease-in-out;
+}
+
+.crochet-btn:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    transform: scale(1.05) rotate(-2deg);
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+}
+
+@keyframes btn-pulse {
+
+    0%,
+    100% {
+        transform: scale(1) rotate(0deg);
+    }
+
+    50% {
+        transform: scale(1.02) rotate(1deg);
+    }
+}
+
+@keyframes float {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+/* --- Section 2 Styles --- */
+
+.invitation-text {
+    font-size: 2rem;
+    text-align: center;
+    color: var(--yarn-white);
+    margin-bottom: 2rem;
+    animation: bounce 2s infinite;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+@keyframes bounce {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+.gift-box {
+    position: relative;
+    width: 150px;
+    height: 150px;
+    cursor: pointer;
+    animation: shake 2s infinite;
+    margin: 0 auto;
+    /* Ensure centering */
+}
+
+.gift-body {
+    width: 100%;
+    height: 80%;
+    background: var(--navy-blue);
+    border: 4px dashed var(--yarn-white);
+    border-radius: 0 0 10px 10px;
+    position: absolute;
+    bottom: 0;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+}
+
+.gift-lid {
+    width: 110%;
+    height: 25%;
+    background: var(--wool-light);
+    border: 4px dashed var(--yarn-white);
+    border-radius: 5px;
+    position: absolute;
+    top: 15%;
+    left: -5%;
+    z-index: 2;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.gift-lid::before {
+    content: '';
+    position: absolute;
+    top: -20px;
+    left: 50%;
+    width: 40px;
+    height: 20px;
+    background: var(--accent-color);
+    border-radius: 50% 50% 0 0;
+    transform: translateX(-50%);
+    border: 2px dashed white;
+}
+
+@keyframes shake {
+    0% {
+        transform: translate(1px, 1px) rotate(0deg);
+    }
+
+    10% {
+        transform: translate(-1px, -2px) rotate(-1deg);
+    }
+
+    80% {
+        transform: translate(-1px, -1px) rotate(1deg);
+    }
+
+    100% {
+        transform: translate(1px, -2px) rotate(-1deg);
+    }
+}
+
+/* Members Grid */
+.members-grid {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    width: 100%;
+    max-width: 600px;
+    max-height: 90vh;
+    /* Keep within screen */
+    overflow-y: auto;
+    padding: 10px;
+    scrollbar-width: none;
+}
+
+.members-grid::-webkit-scrollbar {
+    display: none;
+}
+
+.member {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s, transform 0.5s;
+}
+
+.member.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.member:nth-child(odd) {
+    flex-direction: row;
+}
+
+.member:nth-child(even) {
+    flex-direction: row-reverse;
+}
+
+.member img {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    border: 3px dashed var(--yarn-white);
+    object-fit: cover;
+    background: #000;
+    flex-shrink: 0;
+}
+
+.speech-bubble {
+    position: relative;
+    background: var(--wool-light);
+    border-radius: 15px;
+    padding: 15px;
+    margin: 0 15px;
+    border: 2px dashed var(--yarn-white);
+    color: var(--yarn-white);
+    width: 100%;
+    min-height: 60px;
+    display: flex;
+    align-items: center;
+    font-size: 1.1rem;
+    line-height: 1.4;
+}
+
+.speech-bubble p {
+    margin: 0;
+}
+
+.speech-bubble:after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    width: 0;
+    height: 0;
+    border: 10px solid transparent;
+    margin-top: -10px;
+}
+
+.member:nth-child(odd) .speech-bubble:after {
+    left: 0;
+    border-right-color: var(--wool-light);
+    border-left: 0;
+    margin-left: -10px;
+}
+
+.member:nth-child(even) .speech-bubble:after {
+    right: 0;
+    border-left-color: var(--wool-light);
+    border-right: 0;
+    margin-right: -10px;
+}
+
+/* Marlene's Specific Style */
+.final-bubble {
+    background: var(--accent-color);
+    /* Highlight color */
+    color: white;
+}
+
+.member:last-of-type .speech-bubble:after {
+    border-right-color: var(--accent-color);
+    /* Fix arrow color for odd child */
+}
+
+/* Flower Button - Used in Section 2, reused for letter */
+.flower-btn {
+    margin-top: 1.5rem;
+    padding: 0.8rem 2.5rem;
+    font-family: 'Patrick Hand', cursive;
+    font-size: 1.3rem;
+    background: transparent;
+    color: white;
+    border: 2px dashed #fff;
+    border-radius: 50px;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    animation: float 3s infinite ease-in-out;
+    opacity: 0;
+    /* Hidden initially */
+    transition: opacity 1s, background 0.3s;
+}
+
+.flower-btn.visible {
+    opacity: 1;
+}
+
+.flower-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.flower-btn::before {
+    content: '🌸';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 3rem;
+    opacity: 0.3;
+    animation: spin 5s linear infinite;
+    pointer-events: none;
+}
+
+@keyframes spin {
+    100% {
+        transform: translate(-50%, -50%) rotate(360deg);
+    }
+}
+
+
+/* --- Combined Section 3 BG + Letter --- */
+
+.crochet-heart-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 200%;
+    height: 200%;
+    background-color: var(--navy-blue);
+    background-image:
+        radial-gradient(circle at 100% 50%, transparent 20%, rgba(255, 255, 255, 0.03) 21%, rgba(255, 255, 255, 0.03) 34%, transparent 35%, transparent),
+        radial-gradient(circle at 0% 50%, transparent 20%, rgba(255, 255, 255, 0.03) 21%, rgba(255, 255, 255, 0.03) 34%, transparent 35%, transparent),
+        repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(28, 42, 79, 0.4) 10px, rgba(28, 42, 79, 0.4) 20px);
+    background-size: 40px 40px, 40px 40px, 60px 60px;
+    background-position: 0 0, 20px 20px, 0 0;
+    z-index: 0;
+    opacity: 0.6;
+    animation: gentle-knit 30s linear infinite;
+}
+
+@keyframes gentle-knit {
+    0% {
+        transform: translate(0, 0);
+    }
+
+    100% {
+        transform: translate(-40px, -40px);
+    }
+}
+
+.letter-container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: 10;
+    /* Above BG */
+}
+
+.envelope {
+    position: relative;
+    width: 300px;
+    height: 200px;
+    background-color: var(--wool-light);
+    border: 3px dashed var(--yarn-white);
+    border-radius: 5px;
+    cursor: pointer;
+    transition: transform 1s ease-in-out;
+    z-index: 5;
+    flex-shrink: 0;
+    /* Don't shrink */
+}
+
+.flap {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100px;
+    /* Half height */
+    background-color: var(--navy-blue);
+    border-bottom: 3px dashed var(--yarn-white);
+    clip-path: polygon(0 0, 50% 100%, 100% 0);
+    transform-origin: top;
+    transition: transform 0.5s ease-in-out;
+    z-index: 6;
+}
+
+.envelope.open .flap {
+    transform: rotateX(180deg);
+    z-index: 1;
+}
+
+.letter-content {
+    /* Initially hidden inside envelope */
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    width: 280px;
+    height: 180px;
+    background-color: #fffaf0;
+    padding: 20px;
+    transform: scaleY(0);
+    transform-origin: bottom center;
+    transition: transform 0.8s ease-in-out;
+    z-index: 3;
+    overflow: hidden;
+    border: 2px dashed var(--navy-blue);
+}
+
+/* READING VIEW: Pops out to fullscreen modal */
+.letter-content.reading-view {
+    position: absolute;
+    /* Relative to section or screen */
+    top: 50% !important;
+    left: 50% !important;
+    transform: translate(-50%, -50%) !important;
+    width: 90%;
+    max-width: 500px;
+    height: 80vh;
+    overflow-y: auto;
+    margin: 0;
+    z-index: 100;
+    border: 4px dashed var(--navy-blue);
+    background: #fffaf0;
+    opacity: 0;
+    animation: fadeInLetter 1s forwards;
+    border-radius: 10px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+}
+
+@keyframes fadeInLetter {
+    0% {
+        opacity: 0;
+        transform: translate(-50%, -40%);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translate(-50%, -50%);
+    }
+}
+
+.letter-header {
+    font-family: 'Patrick Hand', cursive;
+    color: var(--navy-blue);
+    margin-top: 0;
+    font-size: 1.8rem;
+    font-weight: bold;
+}
+
+.letter-body {
+    font-family: 'Patrick Hand', cursive;
+    color: #333;
+    font-size: 1.1rem;
+    line-height: 1.3;
+    text-align: justify;
+}
+
+.letter-sign {
+    text-align: right;
+    font-family: 'Patrick Hand', cursive;
+    color: var(--navy-blue);
+    margin-top: 20px;
+}
+
+.click-hint {
+    margin-top: 3rem;
+    font-family: 'Patrick Hand', cursive;
+    font-size: 1.5rem;
+    color: white;
+    text-align: center;
+    animation: bounce 2s infinite;
+    opacity: 1;
+    transition: opacity 0.5s;
+}
+
+.hidden-hint {
+    opacity: 0;
+}
+
+/* Falling Hearts Animation */
+.heart {
+    position: absolute;
+    color: var(--accent-color);
+    font-size: 1.5rem;
+    animation: fall 4s linear forwards;
+    z-index: 20;
+    pointer-events: none;
+    top: -10%;
+}
+
+@keyframes fall {
+    to {
+        transform: translateY(110vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+/* Button inside letter */
+.next-section-btn {
+    display: block;
+    margin: 30px auto 10px auto;
+    padding: 10px 30px;
+    background: var(--navy-blue);
+    color: white;
+    font-family: 'Patrick Hand', cursive;
+    border: 2px dashed white;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 1.2rem;
+    transition: transform 0.3s;
+}
+
+.next-section-btn:hover {
+    transform: scale(1.05);
+}
+
+/* --- Section 4: Celebration --- */
+#section4 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    /* Animated Square bg */
+    background-color: var(--navy-blue);
+    background-image:
+        linear-gradient(45deg, var(--wool-light) 25%, transparent 25%, transparent 75%, var(--wool-light) 75%, var(--wool-light)),
+        linear-gradient(45deg, var(--wool-light) 25%, transparent 25%, transparent 75%, var(--wool-light) 75%, var(--wool-light));
+    background-position: 0 0, 20px 20px;
+    background-size: 40px 40px;
+    animation: move-squares 5s linear infinite;
+}
+
+@keyframes move-squares {
+    0% {
+        background-position: 0 0, 20px 20px;
+    }
+
+    100% {
+        background-position: 40px 40px, 60px 60px;
+    }
+}
+
+.celebration-title {
+    font-family: 'Pacifico', cursive;
+    /* More readable but creative */
+    font-size: 4rem;
+    color: var(--accent-color);
+    text-align: center;
+    margin-bottom: 0.5rem;
+    text-shadow: 2px 2px 0 var(--navy-blue), 0 0 10px rgba(255, 255, 255, 0.5);
+    z-index: 10;
+}
+
+.celebration-subtitle {
+    font-family: 'Patrick Hand', cursive;
+    font-size: 2.5rem;
+    color: var(--yarn-white);
+    margin-bottom: 2rem;
+    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
+    z-index: 10;
+    animation: heartbeat 1.5s infinite;
+}
+
+@keyframes heartbeat {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.1);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+.party-grid {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    /* More space */
+    flex-wrap: wrap;
+    max-width: 900px;
+    z-index: 10;
+}
+
+.party-member {
+    width: 100px;
+    /* Larger circles */
+    height: 100px;
+    border-radius: 50%;
+    border: 4px dashed var(--yarn-white);
+    background: #fff;
+    overflow: hidden;
+    animation: float 3s ease-in-out infinite alternate;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.party-member img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Stagger animations */
+.party-member:nth-child(2) {
+    animation-delay: 0.5s;
+}
+
+.party-member:nth-child(3) {
+    animation-delay: 1s;
+}
+
+.party-member:nth-child(4) {
+    animation-delay: 1.5s;
+}
+
+.party-member:nth-child(5) {
+    animation-delay: 2s;
+}
+
+.yopi-container {
+    position: relative;
+    margin-top: 3rem;
+    z-index: 10;
+    text-align: center;
+}
+
+.yopi-party {
+    width: 180px;
+    /* Slightly larger */
+    height: auto;
+    border-radius: 20px;
+    border: 4px dashed var(--accent-color);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    animation: yopi-jump 2s ease infinite;
+}
+
+@keyframes yopi-jump {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-20px);
+    }
+}
+
+.yopi-bubble {
+    position: absolute;
+    top: -40px;
+    right: -50px;
+    animation: pop-in 3s infinite;
+    font-size: 1.2rem;
+}
+
+@keyframes pop-in {
+
+    0%,
+    100% {
+        transform: scale(1) rotate(5deg);
+    }
+
+    50% {
+        transform: scale(1.1) rotate(-5deg);
+    }
+}
+
+/* Rose Petals */
+.rose-petal {
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    background-color: #d4143a;
+    top: -20px;
+    border-radius: 15px 0px 15px 0px;
+    /* Petal shape */
+    opacity: 0.8;
+    z-index: 5;
+    animation: fall-sway 8s linear forwards;
+}
+
+@keyframes fall-sway {
+    0% {
+        transform: translateY(0) rotate(0deg) translateX(0);
+        opacity: 0;
+    }
+
+    10% {
+        opacity: 0.9;
+    }
+
+    25% {
+        transform: translateY(25vh) rotate(45deg) translateX(20px);
+    }
+
+    50% {
+        transform: translateY(50vh) rotate(90deg) translateX(-20px);
+    }
+
+    75% {
+        transform: translateY(75vh) rotate(135deg) translateX(20px);
+    }
+
+    100% {
+        transform: translateY(110vh) rotate(180deg) translateX(0);
+        opacity: 0;
+    }
+}
+
+
+/* Mobile Tweaks */
+@media (max-width: 768px) {
+    .crochet-title {
+        font-size: 2.5rem;
+        padding: 1rem;
+        width: 90%;
+    }
+
+    .invitation-text {
+        font-size: 1.5rem;
+    }
+
+    .envelope {
+        width: 260px;
+        margin-top: 20px;
+    }
+
+    .letter-content.reading-view {
+        width: 95%;
+        height: 85vh;
+        border-width: 2px;
+    }
+
+    .celebration-title {
+        font-size: 2.5rem;
+    }
+
+    .celebration-subtitle {
+        font-size: 1.8rem;
+    }
+
+    .party-grid {
+        gap: 10px;
+    }
+
+    .party-member {
+        width: 70px;
+        height: 70px;
+    }
+
+    /* Smaller on mobile */
+    .yopi-party {
+        width: 140px;
+    }
+}
